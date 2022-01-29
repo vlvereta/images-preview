@@ -1,7 +1,7 @@
-import { IHit } from "./IHit";
+import { IHit } from './IHit';
 
 export interface ISuccessResponse {
-    total: number;
-    totalHits: number;
-    hits: IHit[];
+  total: number;
+  totalHits: number;
+  hits: IHit[];
 }
