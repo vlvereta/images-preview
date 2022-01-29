@@ -9,12 +9,15 @@ interface IPicturesContainerProps {
   data: ISuccessResponse;
 }
 
-const PicturesContainer: React.FC<IPicturesContainerProps> = ({ data: { hits } }) => {
+const PicturesContainer: React.FC<IPicturesContainerProps> = ({ data: { totalHits, hits } }) => {
   return (
     <div className='pictures-container'>
-      {hits.map(hit => (
-        <PictureBlock pictureBlockData={hit} />
-      ))}
+      <h2>Let's preview what was found. Total hits: {totalHits} &#x1f609;</h2>
+      <div className='pictures-wrapper'>
+        {hits.map(hit => (
+          <PictureBlock key={hit.id} pictureBlockData={hit} />
+        ))}
+      </div>
     </div>
   );
 };

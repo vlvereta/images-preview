@@ -1,4 +1,10 @@
 .pictures-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pictures-container > .pictures-wrapper {
   display: flex;
   flex-flow: row wrap;
   align-items: center;

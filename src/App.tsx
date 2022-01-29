@@ -4,8 +4,8 @@ import { Header } from './components';
 import Service from './api/ApiService';
 import { IBaseState } from './types/baseState';
 import SearchForm from './containers/SearchForm';
-import PicturesBlock from './containers/PicturesContainer';
 import { ISuccessResponse } from './types/ISuccessResponse';
+import PicturesContainer from './containers/PicturesContainer';
 
 const ApiService = new Service();
 
@@ -57,9 +57,9 @@ const App = () => {
             picturesState.isFetching
               ? <p>Fetching...</p>
               : picturesState.error
-                ? <p>Something went wrong...</p>
+                ? <p style={{ color: 'red' }}>{picturesState.error}</p>
                 : picturesState.data
-                  ? <PicturesBlock data={picturesState.data} />
+                  ? <PicturesContainer data={picturesState.data} />
                   : undefined
           }
         </section>
