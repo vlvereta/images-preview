@@ -4,7 +4,7 @@ import { Header } from './components';
 import Service from './api/ApiService';
 import { IBaseState } from './types/baseState';
 import SearchForm from './containers/SearchForm';
-import PicturesBlock from './containers/PicturesBlock';
+import PicturesBlock from './containers/PicturesContainer';
 import { ISuccessResponse } from './types/ISuccessResponse';
 
 const ApiService = new Service();
@@ -32,14 +32,16 @@ const App = () => {
   useEffect(() => () => setPicturesData(initialState), []);
 
   const fetchPictures = async (query: string) => {
+    setPicturesData(null);
+    setPicturesError(null);
     setIsFetching(true);
 
     try {
       const data = await ApiService.fetchPictures(query);
       setPicturesData(data);
     } catch (error) {
-      console.log('Something went wrong: ', error);
-      setPicturesError(error);
+      console.error(error);
+      setPicturesError('Something went wrong, please retry.');
     } finally {
       setIsFetching(false);
     }
@@ -51,9 +53,15 @@ const App = () => {
       <main>
         <SearchForm fetchPictures={fetchPictures} />
         <section>
-          {picturesState.isFetching && <p>Fetching...</p>}
-          {picturesState.error && <p>Something went wrong...</p>}
-          {picturesState.data && <PicturesBlock data={picturesState.data} />}
+          {
+            picturesState.isFetching
+              ? <p>Fetching...</p>
+              : picturesState.error
+                ? <p>Something went wrong...</p>
+                : picturesState.data
+                  ? <PicturesBlock data={picturesState.data} />
+                  : undefined
+          }
         </section>
       </main>
     </>

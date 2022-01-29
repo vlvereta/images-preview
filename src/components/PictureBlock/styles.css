@@ -1,0 +1,31 @@
+.picture-block {
+  box-sizing: border-box;
+  margin: 10px;
+  width: 200px;
+  height: 220px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.picture-block:hover {
+  border: 1px solid gray;
+}
+
+.picture-block > img {
+  object-fit: contain;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.picture-block > .tags {
+  color: gray;
+  overflow: hidden;
+  margin-top: 10px;
+  align-self: flex-start;
+}
