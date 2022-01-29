@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './styles.css';
+
 interface ISearchFormProps {
   onClear: () => void;
   fetchPictures: (query: string) => void;
@@ -20,9 +22,9 @@ const SearchForm: React.FC<ISearchFormProps> = ({ onClear, fetchPictures }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='search-form'>
       <label>
-        Query:
+        Query:&nbsp;
         <input
           type="text"
           value={query}
