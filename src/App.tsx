@@ -9,7 +9,7 @@ import PicturesContainer from './containers/PicturesContainer';
 
 const ApiService = new Service();
 
-type PicturesState = IBaseState<ISuccessResponse | null, any>;
+type PicturesState = IBaseState<ISuccessResponse | null, string | null>;
 
 const initialState: PicturesState = {
   isFetching: false,
@@ -23,17 +23,18 @@ const App = () => {
   const setIsFetching = (isFetching: boolean) =>
     setPicturesState((prevState) => ({ ...prevState, isFetching }));
 
-  const setPicturesData = (data: any) =>
+  const setPicturesData = (data: ISuccessResponse) =>
     setPicturesState((prevState) => ({ ...prevState, data }));
 
-  const setPicturesError = (error: any) =>
+  const setPicturesError = (error: string) =>
     setPicturesState((prevState) => ({ ...prevState, error }));
 
-  useEffect(() => () => setPicturesData(initialState), []);
+  const clearState = () => setPicturesState(initialState);
+    
+  useEffect(() => clearState, []);
 
   const fetchPictures = async (query: string) => {
-    setPicturesData(null);
-    setPicturesError(null);
+    clearState();
     setIsFetching(true);
 
     try {
@@ -51,7 +52,7 @@ const App = () => {
     <>
       <Header />
       <main>
-        <SearchForm fetchPictures={fetchPictures} />
+        <SearchForm fetchPictures={fetchPictures} onClear={clearState} />
         <section>
           {
             picturesState.isFetching
