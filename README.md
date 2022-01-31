@@ -12,7 +12,9 @@ Pixabay API doc: https://pixabay.com/api/docs/
 
 The solution is very basic with minimum imported libraries and has a little bit rudimental design. However, I tried to achieve a clear structure with a good component-shaping to meet the requirements. The implementation can be improved and enlarged with other tools and libraries, such as UI libraries, API connection handling tools, state management tools.
 
-```npm install && npm start```
+**Use the [link](https://vlvereta.github.io/images-preview/) to try it ;)**
+
+**To run locally:** clone the repo and use ```npm install && npm start``` command _(you have to provide an api url and a key to make it work)_.
 
 ### Main views
 
