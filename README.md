@@ -7,3 +7,17 @@ The application must be built using React (not jQuery) and contain some custom s
 For your convenience, we’ve set up an API credential from Pixabay that you can use. However, you don’t have to use this if you prefer another API from a different provider.
 
 Pixabay API doc: https://pixabay.com/api/docs/
+
+# Solution
+
+The solution is very basic with minimum imported libraries and has a little bit rudimental design. However, I tried to achieve a clear structure with a good component-shaping to meet the requirements. The implementation can be improved and enlarged with other tools and libraries, such as UI libraries, API connection handling tools, state management tools.
+
+```npm install && npm start```
+
+### Main views
+
+![screenshot-1](assets/screenshot-1.png?raw=true "screenshot-1")
+
+---
+
+![screenshot-2](assets/screenshot-2.png?raw=true "screenshot-2")
